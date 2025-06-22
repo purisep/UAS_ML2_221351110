@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">StrokeApps</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fitur_title">Fitur Dataset</string>
+    <string name="fitur_list">
+
+1. gender\n
+Tipe: Kategorikal (Male, Female, Other)\n
+Menunjukkan jenis kelamin pasien. Gender dapat mempengaruhi risiko stroke karena perbedaan hormonal, gaya hidup, dan faktor genetik antara laki-laki dan perempuan.\n\n
+
+2. age\n
+Tipe: Numerik (float)\n
+Usia pasien dalam satuan tahun. Risiko stroke biasanya meningkat seiring bertambahnya usia, sehingga fitur ini sangat penting dalam menentukan probabilitas stroke.\n\n
+
+3. hypertension\n
+Tipe: Kategorikal (0 = Tidak, 1 = Ya)\n
+Menunjukkan apakah pasien memiliki riwayat tekanan darah tinggi (hipertensi). Hipertensi adalah salah satu faktor risiko utama terjadinya stroke karena dapat merusak pembuluh darah otak.\n\n
+
+4. heart_disease\n
+Tipe: Kategorikal (0 = Tidak, 1 = Ya)\n
+Menunjukkan apakah pasien memiliki riwayat penyakit jantung. Penyakit jantung tertentu, seperti fibrilasi atrium, dapat meningkatkan risiko penggumpalan darah yang menyebabkan stroke.\n\n
+
+5. ever_married\n
+Tipe: Kategorikal (Yes, No)\n
+Menyatakan apakah pasien pernah menikah. Status pernikahan dapat berkaitan dengan dukungan sosial dan stres yang dialami pasien, yang secara tidak langsung mempengaruhi kesehatan kardiovaskular.\n\n
+
+6. work_type\n
+Tipe: Kategorikal (Private, Self-employed, Govt_job, children, Never_worked)\n
+Jenis pekerjaan pasien. Pola kerja dapat mempengaruhi tingkat stres, aktivitas fisik, dan paparan risiko tertentu yang dapat berkontribusi terhadap kesehatan secara keseluruhan.\n\n
+
+7. Residence_type\n
+Tipe: Kategorikal (Urban, Rural)\n
+Lokasi tempat tinggal pasien. Lingkungan urban dan rural dapat memiliki perbedaan dalam akses layanan kesehatan, pola makan, dan aktivitas fisik yang dapat mempengaruhi risiko stroke.\n\n
+
+8. avg_glucose_level\n
+Tipe: Numerik (float)\n
+Rata-rata kadar glukosa darah pasien. Tingginya kadar glukosa berhubungan dengan diabetes, yang merupakan faktor risiko signifikan terhadap kejadian stroke.\n\n
+
+9. bmi\n
+Tipe: Numerik (float)\n
+Indeks Massa Tubuh (BMI) pasien, yaitu ukuran lemak tubuh berdasarkan tinggi dan berat badan. BMI yang tinggi atau obesitas merupakan faktor risiko utama bagi berbagai penyakit kardiovaskular, termasuk stroke.\n\n
+
+10. smoking_status\n
+Tipe: Kategorikal (formerly smoked, never smoked, smokes, Unknown)\n
+Status merokok pasien. Merokok adalah salah satu penyebab utama kerusakan pembuluh darah dan peningkatan tekanan darah, yang secara signifikan meningkatkan risiko stroke.\n
+</string>
+
+</resources>

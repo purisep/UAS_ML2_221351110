@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- colors.xml - Tambahkan ke res/values/colors.xml -->
+<!--
+<resources>
+    <color name="primary">#1976D2</color>
+    <color name="primary_dark">#0D47A1</color>
+    <color name="primary_light">#BBDEFB</color>
+    <color name="accent">#FF5722</color>
+    <color name="accent_light">#FFCCBC</color>
+    <color name="code_background">#F5F5F5</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="background">#FAFAFA</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="error">#F44336</color>
+</resources>
+-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.model.ModelFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stroke Prediction Model"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_dark"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Section 1: Data Cleaning -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. Data Cleaning dan Preprocessing"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="df_clean = df.drop('id', axis=1)
+if df_clean['bmi'].isnull().sum() > 0:
+    median_bmi = df_clean['bmi'].median()
+    df_clean['bmi'].fillna(median_bmi, inplace=True)
+    print(f&quot;BMI missing values diisi dengan median: {median_bmi}&quot;)"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:background="@color/code_background"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi: Tahap pertama adalah membersihkan data dengan menghapus kolom 'id' yang tidak diperlukan untuk prediksi. Kemudian menangani missing values pada kolom BMI dengan mengisi nilai kosong menggunakan nilai median. Median dipilih karena lebih robust terhadap outlier dibandingkan mean."
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Section 2: Categorical Encoding -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2. Identifikasi dan Encoding Kolom Kategorikal"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="categorical_cols = df_clean.select_dtypes(include=['object']).columns.tolist()
+print(&quot;Kolom kategorikal yang akan di-encode:&quot;)
+for col in categorical_cols:
+    print(f&quot;  {col}: {df_clean[col].unique()}&quot;)"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:background="@color/code_background"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi: Mengidentifikasi semua kolom dengan tipe data 'object' yang merupakan kolom kategorikal (seperti gender, work_type, smoking_status). Kemudian menampilkan unique values dari setiap kolom kategorikal untuk memahami distribusi data sebelum encoding."
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Section 3: Label Encoding -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3. Label Encoding Transformation"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="label_encoders = {}
+df_encoded = df_clean.copy()
+for col in categorical_cols:
+    le = LabelEncoder()
+    df_encoded[col] = le.fit_transform(df_clean[col])
+    label_encoders[col] = le"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:background="@color/code_background"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi: Melakukan Label Encoding pada setiap kolom kategorikal untuk mengkonversi data text menjadi angka. Setiap LabelEncoder disimpan dalam dictionary untuk keperluan inverse transform di masa depan. Proses ini mengubah kategori seperti 'Male', 'Female' menjadi 0, 1."
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Section 4: Train Test Split -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4. Pemisahan Features dan Target"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="X = df_encoded.drop('stroke', axis=1)
+y = df_encoded['stroke']
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:background="@color/code_background"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi: Memisahkan dataset menjadi features (X) dan target variable (y). Features adalah semua kolom kecuali 'stroke', sedangkan target adalah kolom 'stroke'. Data kemudian dibagi menjadi training set (80%) dan testing set (20%) dengan stratified sampling untuk menjaga proporsi kelas."
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Section 5: Feature Scaling -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5. Feature Scaling/Normalisasi"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:background="@color/code_background"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi: Melakukan standardisasi features menggunakan StandardScaler untuk mengubah semua features ke skala yang sama (mean=0, std=1). Ini penting untuk neural network agar tidak ada feature yang mendominasi karena perbedaan skala. Scaler di-fit pada training data dan diterapkan pada test data."
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Section 6: Neural Network Model -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6. Arsitektur Neural Network"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="model = keras.Sequential([
+    layers.Dense(128, activation='relu', input_shape=(X_train_balanced.shape[1],)),
+    layers.Dropout(0.3),
+    layers.Dense(64, activation='relu'),
+    layers.Dropout(0.2),
+    layers.Dense(32, activation='relu'),
+    layers.Dropout(0.1),
+    layers.Dense(16, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:background="@color/code_background"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi: Membangun deep neural network dengan 5 hidden layers untuk prediksi stroke. Arsitektur menggunakan pola decreasing neurons (128→64→32→16→1) dengan ReLU activation di hidden layers. Dropout layers (0.3, 0.2, 0.1) ditambahkan untuk mencegah overfitting. Output layer menggunakan sigmoid activation untuk binary classification (stroke/no stroke)."
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
+
+        </LinearLayout>
+
+        <!-- Summary -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/accent_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pipeline Summary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_dark"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pipeline ini menerapkan best practices dalam machine learning: preprocessing data yang proper, handling missing values, encoding categorical variables, feature scaling, dan penggunaan dropout untuk regularisasi. Model siap untuk training dan evaluation."
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

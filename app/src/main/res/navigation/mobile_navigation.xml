@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_tentang">
+
+    <fragment
+        android:id="@+id/nav_simulasi"
+        android:name="com.example.strokeapps.ui.simulasi.SimulasiFragment"
+        android:label="Simulasi"
+        tools:layout="@layout/fragment_simulasi" />
+    <fragment
+        android:id="@+id/nav_dataset"
+        android:name="com.example.strokeapps.ui.dataset.DatasetFragment"
+        android:label="Data Set"
+        tools:layout="@layout/fragment_dataset" />
+    <fragment
+        android:id="@+id/nav_fitur"
+        android:name="com.example.strokeapps.ui.fitur.FiturFragment"
+        android:label="Fitur"
+        tools:layout="@layout/fragment_fitur" />
+    <fragment
+        android:id="@+id/nav_model"
+        android:name="com.example.strokeapps.ui.model.ModelFragment"
+        android:label="Model"
+        tools:layout="@layout/fragment_model" />
+    <fragment
+        android:id="@+id/nav_tentang"
+        android:name="com.example.strokeapps.ui.tentang.TentangFragment"
+        android:label="Tentang"
+        tools:layout="@layout/fragment_tentang" />
+
+</navigation>
